@@ -11,7 +11,7 @@ import {
 } from '../pokemon';
 
 function useSafeDispatch(dispatch) {
-  const mountedRef = React.useRef(false)
+  const mountedRef = React.useRef(false);
 
   React.useLayoutEffect(() => {
     mountedRef.current = true;
@@ -51,7 +51,7 @@ function useAsync(initialState) {
     ...initialState,
   });
 
-  const dispatch = useSafeDispatch(unsafeDispatch)
+  const dispatch = useSafeDispatch(unsafeDispatch);
 
   const { data, status, error } = state;
 
