@@ -12,6 +12,14 @@ function CountProvider(props) {
   return <CountContext.Provider value={value} {...props} />;
 }
 
+function useCount() {
+  const context = React.useContext(CountContext);
+  if (!context) {
+    throw new Error('useCount must be used within a CountProvider');
+  }
+  return context;
+}
+
 function CountDisplay() {
   const [count] = React.useContext(CountContext);
 
@@ -19,7 +27,7 @@ function CountDisplay() {
 }
 
 function Counter() {
-  const [, setCount] = React.useContext(CountContext);
+  const [, setCount] = useCount();
   const increment = () => setCount(c => c + 1);
 
   return <button onClick={increment}>Increment count</button>;
